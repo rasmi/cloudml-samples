@@ -10,7 +10,7 @@ import xgboost as xgb
 
 
 # TODO: REPLACE 'BUCKET_CREATED_ABOVE' with your GCS BUCKET_ID
-BUCKET_ID = 'torryyang-xgb-models'
+MODEL_BUCKET_ID = 'torryyang-xgb-models'
 # [END setup]
 
 # ---------------------------------------
@@ -102,7 +102,7 @@ model = 'model.bst'
 bst.save_model(model)
 
 # Upload the model to GCS
-bucket = storage.Client().bucket(BUCKET_ID)
+bucket = storage.Client().bucket(MODEL_BUCKET_ID)
 blob = bucket.blob('{}/{}'.format(
     datetime.datetime.now().strftime('census_%Y%m%d_%H%M%S'),
     model))
